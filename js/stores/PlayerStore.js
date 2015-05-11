@@ -33,6 +33,10 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
     });
   },
 
+  getById: function(id) {
+    return _players[id];
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },

@@ -9,7 +9,7 @@ var MatchStore = require('../stores/MatchStore');
 function getAppState() {
   return {
     allPlayers: PlayerStore.getAllSortedByWins(),
-    allMatches: MatchStore.getAll()
+    allMatches: MatchStore.getLast(5)
   };
 }
 

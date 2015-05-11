@@ -1,5 +1,6 @@
 var React = require('react');
 var MatchActions = require('../actions/MatchActions');
+var PlayerStore = require('../stores/PlayerStore');
 
 var MatchNew = React.createClass({
   render: function() {
@@ -38,8 +39,8 @@ var MatchNew = React.createClass({
     };
 
     var attrs = {
-      winner: players[ids.winner],
-      loser: players[ids.loser]
+      winner: PlayerStore.getById(ids.winner),
+      loser: PlayerStore.getById(ids.loser)
     }
 
     MatchActions.create(attrs);

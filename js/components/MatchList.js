@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 
 var MatchListRow = React.createClass({
   render: function() {
@@ -6,7 +7,7 @@ var MatchListRow = React.createClass({
     return (
       <tr>
         <td>
-          {match.createdAt}
+          {moment(match.createdAt).fromNow()}
         </td>
         <td>
           {match.winner.name}

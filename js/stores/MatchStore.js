@@ -1,13 +1,14 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var _ = require('lodash');
 
 var CHANGE_EVENT = 'change';
 
 var _matches = {};
 
 function create(id, attrs) {
-  _matches[id] = assign({}, attrs, {id:id});
+  _matches[id] = assign({}, attrs, {id:id}, {createdAt: Date.now()});
 }
 
 function resetList(list) {
@@ -20,6 +21,14 @@ var MatchStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
     return _matches;
+  },
+
+  getLast: function(number) {
+    var matches = _.sortBy(_matches, function(match) {
+      return -match.createdAt;
+    });
+
+    return _.take(matches, number);
   },
 
   emitChange: function() {
