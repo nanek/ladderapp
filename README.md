@@ -4,11 +4,8 @@
 
     npm start
 
-    open index.html
+    open http://localhost:8282/
 
-## TODO
+## Goals
 
-* Persist data stores
-* Clarify router use
-* Babeljs
-* Immutablejs
+* Understand React and Flux

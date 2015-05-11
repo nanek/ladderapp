@@ -1,0 +1,12 @@
+{
+  "firebase": "ladderapp",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "package.json",
+    "**/.*",
+    "**/node_modules/**",
+    "js/**",
+    "README.md"
+  ]
+}
