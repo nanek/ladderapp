@@ -1,6 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var _ = require('lodash');
 
 var CHANGE_EVENT = 'change';
 
@@ -24,6 +25,12 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
     return _players;
+  },
+
+  getAllSortedByWins: function() {
+    return _.sortBy(_players, function(p) {
+      return -p.wins;
+    });
   },
 
   emitChange: function() {
