@@ -1,12 +1,12 @@
 var React = require('react');
 window.React = React; // export for http://fb.me/react-devtools
 
-var LadderApp = require('./components/LadderApp');
+var MainPage = require('./pages/Main');
 var MatchApi = require('./api/MatchApi');
 var PlayerApi = require('./api/PlayerApi');
 
 React.render(
-  <LadderApp />,
+  <MainPage />,
   document.getElementById('react')
 );
 

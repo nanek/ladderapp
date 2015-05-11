@@ -1,8 +1,8 @@
 var React = require('react');
-var LeaderBoard = require('./LeaderBoard');
-var MatchNew = require('./MatchNew');
-var MatchList = require('./MatchList');
-var PlayerNew = require('./PlayerNew');
+var LeaderBoard = require('../components/LeaderBoard');
+var MatchNew = require('../components/MatchNew');
+var MatchList = require('../components/MatchList');
+var PlayerNew = require('../components/PlayerNew');
 var PlayerStore = require('../stores/PlayerStore');
 var MatchStore = require('../stores/MatchStore');
 
