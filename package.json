@@ -6,7 +6,7 @@
     "start": "npm run server & npm run watch",
     "watch": "watchify -o dist/bundle.js -v -d js/app.js",
     "server": "http-server -p 8282 -s",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > dist/bundle.js"
+    "build": "mkdir -p dist && browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > dist/bundle.js"
   },
   "author": "Kenan Shifflett",
   "license": "MIT",
