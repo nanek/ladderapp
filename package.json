@@ -4,8 +4,8 @@
   "description": "Ladder",
   "scripts": {
     "start": "npm run server & npm run watch",
-    "watch": "watchify -o dist/bundle.js -v -d js/app.js",
-    "server": "http-server -p 8282 -s",
+    "watch": "watchify -o js/bundle.js -v -d js/app.js",
+    "server": "http-server -p 9400 -s",
     "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js"
   },
   "author": "Kenan Shifflett",
