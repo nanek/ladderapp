@@ -51,5 +51,5 @@ module.exports = {
   create: create,
   list: list,
   addWin: addWin,
-  addLoss, addLoss
+  addLoss: addLoss
 }
