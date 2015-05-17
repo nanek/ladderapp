@@ -15,12 +15,6 @@ function update(id, attrs) {
   assign(_players[id], attrs, {id:id});
 }
 
-function resetList(list) {
-  Object.keys(list).forEach(function(playerId) {
-    _players[playerId] = assign({}, list[playerId], {id:playerId});
-  });
-}
-
 var PlayerStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
@@ -61,11 +55,6 @@ AppDispatcher.register(function(action) {
 
     case 'PLAYER_UPDATED':
       update(action.key, action.value);
-      PlayerStore.emitChange();
-      break;
-
-    case 'PLAYER_LIST_RESPONSE':
-      resetList(action.list);
       PlayerStore.emitChange();
       break;
 

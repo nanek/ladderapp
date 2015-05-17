@@ -12,19 +12,16 @@ var create = function(attrs) {
     if (err) {
       return ServerActions.receiveMatchCreateError(err);
     }
-    ServerActions.receiveMatchCreateSuccess(item.key(), attrs);
   });
 }
 
-var list = function() {
-  ref.once('value', function(snapshot) {
-    ServerActions.receiveMatchList(snapshot.val());
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
+var init = function() {
+  ref.on('child_changed', function(snapshot) {
+    ServerActions.receiveMatchCreateSuccess(snapshot.key(), snapshot.val());
   });
 }
 
 module.exports = {
   create: create,
-  list: list
+  init: init
 }

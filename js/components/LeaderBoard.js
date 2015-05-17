@@ -17,6 +17,9 @@ var LeaderBoardRow = React.createClass({
         <td>
           {player.losses}
         </td>
+        <td>
+          {player.points}
+        </td>
       </tr>
     )
   }
@@ -42,6 +45,7 @@ var LeaderBoard = React.createClass({
             <td>Name</td>
             <td>Wins</td>
             <td>Losses</td>
+            <td>Points</td>
           </tr>
           {players}
         </table>

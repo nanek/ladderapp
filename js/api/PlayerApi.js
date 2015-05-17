@@ -4,52 +4,53 @@ var ServerActions = require('../actions/ServerActions');
 var create = function(attrs) {
   attrs.wins = 0;
   attrs.losses = 0;
+  attrs.points = 2000;
 
   var item = ref.push();
   item.set(attrs, function(err) {
     if (err) {
       return ServerActions.receivePlayerCreateError(err);
     }
-    ServerActions.receivePlayerCreateSuccess(item.key(), attrs);
   });
 }
 
-var list = function() {
-  ref.once('value', function(snapshot) {
-    ServerActions.receivePlayerList(snapshot.val());
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
-};
-
-var _incrementCounter = function(id, counterKey) {
-  var counterRef = ref.child(id).child(counterKey);
-  counterRef.transaction(function (current_value) {
-    return (current_value || 0) + 1;
+var _incrementCounter = function(id, counterKey, points) {
+  var playerRef = ref.child(id);
+  playerRef.transaction(function (player) {
+    player[counterKey] = (player[counterKey] || 0) + 1;
+    player.points = (player.points || 0) + points;
+    return player;
   }, function(error, committed, snapshot) {
     if (error) {
       console.log('Transaction failed abnormally!', error);
     } else if (!committed) {
       console.log('We aborted the transaction (because already exists).');
     } else {
-      var update = {};
-      update[counterKey] = snapshot.val();
-      ServerActions.receivePlayerUpdate(id, update);
     }
   });
 }
 
-var addWin = function(id) {
-  _incrementCounter(id, 'wins');
+var addWin = function(id, points) {
+  _incrementCounter(id, 'wins', points);
 }
 
-var addLoss = function(id) {
-  _incrementCounter(id, 'losses');
+var addLoss = function(id, points) {
+  _incrementCounter(id, 'losses', points);
+}
+
+var init = function() {
+  ref.on('child_added', function(snapshot) {
+    ServerActions.receivePlayerCreateSuccess(snapshot.key(), snapshot.val());
+  });
+
+  ref.on('child_changed', function(snapshot) {
+    ServerActions.receivePlayerUpdate(snapshot.key(), snapshot.val());
+  });
 }
 
 module.exports = {
   create: create,
-  list: list,
   addWin: addWin,
-  addLoss: addLoss
+  addLoss: addLoss,
+  init: init
 }

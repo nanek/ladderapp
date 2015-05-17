@@ -11,12 +11,6 @@ function create(id, attrs) {
   _matches[id] = assign({}, attrs, {id:id}, {createdAt: Date.now()});
 }
 
-function resetList(list) {
-  Object.keys(list).forEach(function(matchId) {
-    _matches[matchId] = assign({}, list[matchId], {id:matchId});
-  });
-}
-
 var MatchStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
@@ -50,11 +44,6 @@ AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case 'MATCH_CREATED':
       create(action.key, action.value);
-      MatchStore.emitChange();
-      break;
-
-    case 'MATCH_LIST_RESPONSE':
-      resetList(action.list);
       MatchStore.emitChange();
       break;
 

@@ -23,5 +23,5 @@ Router.run(routes, function (Handler) {
 });
 
 // Fetch initial data.
-MatchApi.list();
-PlayerApi.list();
+MatchApi.init();
+PlayerApi.init();

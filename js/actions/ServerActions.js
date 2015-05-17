@@ -2,13 +2,6 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var ServerActions = {
 
-  receiveMatchList: function(list) {
-    AppDispatcher.dispatch({
-      actionType: 'MATCH_LIST_RESPONSE',
-      list: list
-    });
-  },
-
   receiveMatchCreateSuccess: function(key, value) {
     AppDispatcher.dispatch({
       actionType: 'MATCH_CREATED',
@@ -21,13 +14,6 @@ var ServerActions = {
     AppDispatcher.dispatch({
       actionType: 'MATCH_CREATE_FAILED',
       error: error
-    });
-  },
-
-  receivePlayerList: function(list) {
-    AppDispatcher.dispatch({
-      actionType: 'PLAYER_LIST_RESPONSE',
-      list: list
     });
   },
 
