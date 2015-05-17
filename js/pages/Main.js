@@ -1,19 +1,30 @@
 var React = require('react');
+var Header = require('../components/Header');
 var LeaderBoard = require('../components/LeaderBoard');
 var MatchNew = require('../components/MatchNew');
 var MatchList = require('../components/MatchList');
 var PlayerNew = require('../components/PlayerNew');
 var PlayerStore = require('../stores/PlayerStore');
 var MatchStore = require('../stores/MatchStore');
+var AuthApi = require('../api/AuthApi');
 
 function getAppState() {
   return {
     allPlayers: PlayerStore.getAllSortedByWins(),
-    allMatches: MatchStore.getLast(5)
+    allMatches: MatchStore.getLast(5),
+    auth: AuthApi.getAuth()
   };
 }
 
 var LadderApp = React.createClass({
+
+  statics: {
+    willTransitionTo: function (transition) {
+      if (!AuthApi.getAuth()) {
+        transition.redirect('/login', {}, {'nextPath': transition.path});
+      }
+    }
+  },
 
   getInitialState: function() {
     return getAppState();
@@ -31,7 +42,8 @@ var LadderApp = React.createClass({
 
   render: function() {
     return (
-      <div className="ladderapp">
+      <div>
+        <Header user={this.state.auth}/>
         <LeaderBoard allPlayers={this.state.allPlayers}/>
         <MatchNew allPlayers={this.state.allPlayers}/>
         <PlayerNew/>

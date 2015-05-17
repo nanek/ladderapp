@@ -16,7 +16,8 @@
     "lodash": "3.8.0",
     "moment": "2.10.2",
     "object-assign": "2.0.0",
-    "react": "^0.13.0"
+    "react": "^0.13.0",
+    "react-router": "0.13.3"
   },
   "devDependencies": {
     "browserify": "^10.0.0",
@@ -33,7 +34,7 @@
     ]
   },
   "repository": {
-    "type" : "git"
-  , "url" : "https://github.com/nanek/ladderapp.git"
+    "type": "git",
+    "url": "https://github.com/nanek/ladderapp.git"
   }
 }
