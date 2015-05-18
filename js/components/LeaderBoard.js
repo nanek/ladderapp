@@ -37,9 +37,9 @@ var LeaderBoard = React.createClass({
     }
 
     return (
-      <div className="leaderboard">
-        <h1>Leader Board</h1>
-        <table>
+      <div className="ld-leaderboard ld-panel">
+        <div className="ld-panel-title">Leader Board</div>
+        <table className="ld-table">
           <tr>
             <td>Rank</td>
             <td>Name</td>

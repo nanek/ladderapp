@@ -4,8 +4,8 @@ var PlayerActions = require('../actions/PlayerActions');
 var PlayerNew = React.createClass({
   render: function() {
     return (
-      <div>
-        <h2>Add Player</h2>
+      <div className="ld-player-new ld-panel">
+        <div className="ld-panel-title">Add Player</div>
         <input ref="name" />
         <button type="button" onClick={this.handleSubmit}>Add Player</button>
       </div>

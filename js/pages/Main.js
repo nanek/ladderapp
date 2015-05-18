@@ -44,10 +44,12 @@ var LadderApp = React.createClass({
     return (
       <div>
         <Header user={this.state.auth}/>
-        <LeaderBoard allPlayers={this.state.allPlayers}/>
-        <MatchNew allPlayers={this.state.allPlayers}/>
-        <PlayerNew/>
-        <MatchList allMatches={this.state.allMatches}/>
+        <div className="ld-container">
+          <LeaderBoard allPlayers={this.state.allPlayers}/>
+          <MatchNew allPlayers={this.state.allPlayers}/>
+          <PlayerNew/>
+          <MatchList allMatches={this.state.allMatches}/>
+        </div>
       </div>
     );
   },

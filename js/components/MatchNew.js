@@ -12,8 +12,8 @@ var MatchNew = React.createClass({
     }
 
     return (
-      <div>
-        <h2>Add Match</h2>
+      <div className="ld-match-new ld-panel">
+        <div className="ld-panel-title">Add Match</div>
         <label>Winner</label>
         <select ref="winner">
           {options}

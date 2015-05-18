@@ -31,9 +31,9 @@ var MatchList = React.createClass({
     }
 
     return (
-      <div>
-        <h1>Recent Matches</h1>
-        <table>
+      <div className="ld-match-list ld-panel">
+        <div className="ld-panel-title">Recent Matches</div>
+        <table className="ld-table">
           <tr>
             <td>Date</td>
             <td>Winner</td>
