@@ -11,6 +11,7 @@ body {
 
 .ld-header a {
   color: #FFF;
+  text-decoration: none;
 }
 
 .ld-header-title {

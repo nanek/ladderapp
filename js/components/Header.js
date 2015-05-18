@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var AuthApi = require('../api/AuthApi');
 
 var Header = React.createClass({
@@ -11,7 +12,9 @@ var Header = React.createClass({
     return (
       <div className="ld-header">
         <div className="ld-container">
-          <div className="ld-header-title">Ladder</div>
+          <div className="ld-header-title">
+            <Link to="/">Ladder</Link>
+          </div>
           <div className="ld-header-right">
             <img width="30" height="30" src={this.props.user.github.cachedUserProfile.avatar_url} />
             <div className="ld-header-name">{this.props.user.github.username}</div>
