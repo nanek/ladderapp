@@ -1,15 +1,17 @@
 var React = require('react');
+var Link = require('react-router').Link;
 
 var LeaderBoardRow = React.createClass({
   render: function() {
     var player = this.props.player;
+
     return (
       <tr>
         <td>
           {this.props.rank}
         </td>
         <td>
-          {player.name}
+          <Link to="player" params={player}>{player.name}</Link>
         </td>
         <td>
           {player.wins}

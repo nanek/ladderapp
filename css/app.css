@@ -88,3 +88,12 @@ body {
 .ld-match-new select {
   margin: 0 5px;
 }
+
+.ld-player-detail-info {
+  list-style: none;
+}
+
+.ld-player-detail-info label {
+  margin-right: 5px;
+  font-weight: bold;
+}

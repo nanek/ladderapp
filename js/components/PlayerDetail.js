@@ -3,9 +3,11 @@ var React = require('react');
 var PlayerDetail = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>Player: {this.props.name}</h1>
-        <ul>
+      <div className="ld-player-detail ld-panel">
+        <ul className="ld-player-detail-info">
+          <li>
+            <label>Name:</label>{this.props.name}
+          </li>
         </ul>
       </div>
     )

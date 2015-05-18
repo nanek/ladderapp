@@ -8,6 +8,8 @@ var DefaultRoute = Router.DefaultRoute;
 var App = require('./pages/App');
 var LoginPage = require('./pages/Login');
 var MainPage = require('./pages/Main');
+var PlayerPage = require('./pages/Player');
+
 var MatchApi = require('./api/MatchApi');
 var PlayerApi = require('./api/PlayerApi');
 
@@ -15,6 +17,7 @@ var routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={MainPage}/>
     <Route name="login" handler={LoginPage}/>
+    <Route name="player" path="player/:id" handler={PlayerPage}/>
   </Route>
 );
 
