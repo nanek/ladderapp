@@ -16,7 +16,7 @@ var create = function(attrs) {
 }
 
 var init = function() {
-  ref.on('child_changed', function(snapshot) {
+  ref.on('child_added', function(snapshot) {
     ServerActions.receiveMatchCreateSuccess(snapshot.key(), snapshot.val());
   });
 }

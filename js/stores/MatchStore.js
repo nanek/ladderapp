@@ -8,7 +8,7 @@ var CHANGE_EVENT = 'change';
 var _matches = {};
 
 function create(id, attrs) {
-  _matches[id] = assign({}, attrs, {id:id}, {createdAt: Date.now()});
+  _matches[id] = assign({}, attrs, {id:id});
 }
 
 var MatchStore = assign({}, EventEmitter.prototype, {
