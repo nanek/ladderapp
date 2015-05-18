@@ -40,14 +40,18 @@ var LeaderBoard = React.createClass({
       <div className="ld-leaderboard ld-panel">
         <div className="ld-panel-title">Leader Board</div>
         <table className="ld-table">
-          <tr>
-            <td>Rank</td>
-            <td>Name</td>
-            <td>Wins</td>
-            <td>Losses</td>
-            <td>Points</td>
-          </tr>
-          {players}
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Wins</th>
+              <th>Losses</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            {players}
+          </tbody>
         </table>
       </div>
     )

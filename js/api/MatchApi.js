@@ -6,7 +6,9 @@ var create = function(attrs) {
 
   item.set({
     winner: attrs.winner,
+    winnerPoints: attrs.winnerPoints,
     loser: attrs.loser,
+    loserPoints: attrs.loserPoints,
     createdAt: Firebase.ServerValue.TIMESTAMP
   }, function(err) {
     if (err) {

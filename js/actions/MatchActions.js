@@ -12,6 +12,8 @@ var MatchActions = {
     });
 
     rating = EloRating.calculate(attrs.winner.points, attrs.loser.points);
+    attrs.winnerPoints = rating[0];
+    attrs.loserPoints = rating[1];
     MatchApi.create(attrs);
 
     PlayerApi.addWin(attrs.winner.id, rating[0]);

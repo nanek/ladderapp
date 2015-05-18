@@ -7,7 +7,7 @@ var PlayerNew = React.createClass({
       <div className="ld-player-new ld-panel">
         <div className="ld-panel-title">Add Player</div>
         <input ref="name" />
-        <button type="button" onClick={this.handleSubmit}>Add Player</button>
+        <button className="ld-button" type="button" onClick={this.handleSubmit}>Add Player</button>
       </div>
     )
   },

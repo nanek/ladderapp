@@ -10,10 +10,10 @@ var MatchListRow = React.createClass({
           {moment(match.createdAt).fromNow()}
         </td>
         <td>
-          {match.winner.name}
+          {match.winner.name} ({match.winnerPoints})
         </td>
         <td>
-          {match.loser.name}
+          {match.loser.name} ({match.loserPoints})
         </td>
       </tr>
     )
@@ -34,12 +34,16 @@ var MatchList = React.createClass({
       <div className="ld-match-list ld-panel">
         <div className="ld-panel-title">Recent Matches</div>
         <table className="ld-table">
-          <tr>
-            <td>Date</td>
-            <td>Winner</td>
-            <td>Loser</td>
-          </tr>
-          {matchRows}
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Winner</th>
+              <th>Loser</th>
+            </tr>
+          </thead>
+          <tbody>
+            {matchRows}
+          </tbody>
         </table>
       </div>
     )

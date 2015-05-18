@@ -10,7 +10,7 @@ var AuthApi = require('../api/AuthApi');
 
 function getAppState() {
   return {
-    allPlayers: PlayerStore.getAllSortedByWins(),
+    allPlayers: PlayerStore.getAllSortedByPoints(),
     allMatches: MatchStore.getLast(5),
     auth: AuthApi.getAuth()
   };

@@ -21,9 +21,9 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
     return _players;
   },
 
-  getAllSortedByWins: function() {
+  getAllSortedByPoints: function() {
     return _.sortBy(_players, function(p) {
-      return -p.wins;
+      return -p.points;
     });
   },
 

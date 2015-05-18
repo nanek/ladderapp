@@ -24,7 +24,7 @@ var MatchNew = React.createClass({
           {options}
         </select>
 
-        <button type="button" onClick={this.handleSubmit}>Add Match</button>
+        <button className="ld-button" type="button" onClick={this.handleSubmit}>Add Match</button>
       </div>
     )
   },

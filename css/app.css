@@ -24,13 +24,13 @@ body {
 
 .ld-header-right {
   top: 10px;
-  right: 20px;
+  right: 35px;
   position: absolute;
 }
 
 .ld-container {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -49,6 +49,42 @@ body {
   padding-bottom: 10px;
 }
 
+.ld-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ld-table thead tr th {
+  padding: 8px;
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
 .ld-table td {
-  width: 75px;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.ld-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.ld-button:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.ld-match-new select {
+  margin: 0 5px;
 }
