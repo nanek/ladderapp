@@ -4,9 +4,9 @@
   "description": "Ladder",
   "scripts": {
     "start": "npm run server & npm run watch",
-    "watch": "watchify -o js/bundle.js -v -d js/app.js",
+    "watch": "watchify -o js/bundle.js -v -d js/app.js & node-sass -o css -w scss",
     "server": "http-server -p 9400 -s",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js"
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js && node-sass -o css scss"
   },
   "author": "Kenan Shifflett",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "browserify": "^10.0.0",
     "envify": "^3.4.0",
     "http-server": "0.8.0",
+    "node-sass": "^3.1.1",
     "reactify": "^1.1.0",
     "uglify-js": "^2.4.20",
     "watchify": "^3.2.1"
