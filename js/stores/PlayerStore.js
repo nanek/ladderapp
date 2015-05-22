@@ -27,6 +27,12 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
     });
   },
 
+  getAllSortedByName: function() {
+    return _.sortBy(_players, function(p) {
+      return p.name;
+    });
+  },
+
   getById: function(id) {
     return _players[id];
   },

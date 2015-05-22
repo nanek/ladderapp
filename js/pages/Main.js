@@ -12,6 +12,7 @@ var AuthApi = require('../api/AuthApi');
 function getAppState() {
   return {
     allPlayers: PlayerStore.getAllSortedByPoints(),
+    allPlayersByName: PlayerStore.getAllSortedByName(),
     allMatches: MatchStore.getLast(5),
     auth: AuthApi.getAuth(),
     messages: MessageStore.getMessages()
@@ -49,7 +50,7 @@ var LadderApp = React.createClass({
     var messageRows = [];
 
     for (var key in messages) {
-      messageRows.push(<div key={key} className="alert">{messages[key]}</div>);
+      messageRows.push(<div key={key} className="ld-alert">{messages[key]}</div>);
     }
 
     return (
@@ -58,7 +59,7 @@ var LadderApp = React.createClass({
         <div className="ld-container">
           {messageRows}
           <LeaderBoard allPlayers={this.state.allPlayers}/>
-          <MatchNew allPlayers={this.state.allPlayers}/>
+          <MatchNew allPlayers={this.state.allPlayersByName}/>
           <PlayerNew/>
           <MatchList allMatches={this.state.allMatches}/>
         </div>
