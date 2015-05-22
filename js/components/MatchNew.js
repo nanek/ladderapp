@@ -1,5 +1,6 @@
 var React = require('react');
 var MatchActions = require('../actions/MatchActions');
+var MessageActions = require('../actions/MessageActions');
 var PlayerStore = require('../stores/PlayerStore');
 
 var MatchNew = React.createClass({
@@ -37,6 +38,10 @@ var MatchNew = React.createClass({
       winner: this.refs.winner.getDOMNode().value,
       loser: this.refs.loser.getDOMNode().value
     };
+
+    if (ids.winner === ids.loser) {
+      return MessageActions.create("Match cannot be same person.");
+    }
 
     var attrs = {
       winner: PlayerStore.getById(ids.winner),

@@ -1,5 +1,6 @@
 var React = require('react');
 var PlayerActions = require('../actions/PlayerActions');
+var MessageActions = require('../actions/MessageActions');
 
 var PlayerNew = React.createClass({
   render: function() {
@@ -17,6 +18,10 @@ var PlayerNew = React.createClass({
 
     var attrs = {
       name: this.refs.name.getDOMNode().value
+    };
+
+    if (attrs.name === '') {
+      return MessageActions.create("Player name cannot be blank.");
     };
 
     PlayerActions.create(attrs);

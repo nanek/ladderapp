@@ -26,7 +26,7 @@ var MatchList = React.createClass({
     var matches = this.props.allMatches;
     var matchRows = [];
 
-    for (var key in this.props.allMatches) {
+    for (var key in matches) {
       matchRows.push(<MatchListRow key={key} match={matches[key]} />);
     }
 
