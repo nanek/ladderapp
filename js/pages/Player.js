@@ -40,7 +40,7 @@ var PlayerPage = React.createClass({
       <div>
         <Header user={this.state.auth}/>
         <div className="ld-container">
-          <PlayerDetail name={this.state.player.name}/>
+          <PlayerDetail {...this.state.player}/>
         </div>
       </div>
     );

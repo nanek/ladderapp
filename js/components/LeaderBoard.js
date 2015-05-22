@@ -14,13 +14,10 @@ var LeaderBoardRow = React.createClass({
           <Link to="player" params={player}>{player.name}</Link>
         </td>
         <td>
-          {player.wins}
-        </td>
-        <td>
-          {player.losses}
-        </td>
-        <td>
           {player.points}
+        </td>
+        <td>
+          {player.wins} - {player.losses}
         </td>
       </tr>
     )
@@ -46,9 +43,8 @@ var LeaderBoard = React.createClass({
             <tr>
               <th>Rank</th>
               <th>Name</th>
-              <th>Wins</th>
-              <th>Losses</th>
               <th>Points</th>
+              <th>Record</th>
             </tr>
           </thead>
           <tbody>

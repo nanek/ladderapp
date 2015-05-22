@@ -8,6 +8,15 @@ var PlayerDetail = React.createClass({
           <li>
             <label>Name:</label>{this.props.name}
           </li>
+          <li>
+            <label>Points:</label>{this.props.points}
+          </li>
+          <li>
+            <label>Wins:</label>{this.props.wins}
+          </li>
+          <li>
+            <label>Losses:</label>{this.props.losses}
+          </li>
         </ul>
       </div>
     )
