@@ -39,6 +39,15 @@ var ServerActions = {
       value: value
     });
   },
+
+  receiveUserCreateSuccess: function(key, value) {
+    AppDispatcher.dispatch({
+      actionType: 'USER_CREATED',
+      key: key,
+      value: value
+    });
+  },
+
 }
 
 module.exports = ServerActions;
