@@ -18,8 +18,10 @@ var create = function(attrs) {
 }
 
 var init = function() {
-  ref.on('child_added', function(snapshot) {
-    ServerActions.receiveMatchCreateSuccess(snapshot.key(), snapshot.val());
+  ref.orderByChild('createdAt')
+    .limitToLast(5)
+    .on('child_added', function(snapshot) {
+      ServerActions.receiveMatchCreateSuccess(snapshot.key(), snapshot.val());
   });
 }
 
