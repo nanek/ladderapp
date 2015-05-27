@@ -94,10 +94,15 @@ body {
 }
 
 .ld-container {
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-right: auto;
   margin-left: auto;
+
+  @media only screen and (min-width: 768px) {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 }
 
 .ld-panel {

@@ -5,17 +5,10 @@ var MatchListRow = React.createClass({
   render: function() {
     var match = this.props.match;
     return (
-      <tr>
-        <td>
-          {moment(match.createdAt).fromNow()}
-        </td>
-        <td>
-          {match.winner.name} ({match.winnerPoints})
-        </td>
-        <td>
-          {match.loser.name} ({match.loserPoints})
-        </td>
-      </tr>
+      <li>
+        {match.winner.name} ({match.winnerPoints}) beat {match.loser.name} ({match.loserPoints})
+        <div className="ld-match-list-item-time">{moment(match.createdAt).fromNow()}</div>
+      </li>
     )
   }
 });
@@ -33,18 +26,9 @@ var MatchList = React.createClass({
     return (
       <div className="ld-match-list ld-panel">
         <div className="ld-panel-title">Recent Matches</div>
-        <table className="ld-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Winner</th>
-              <th>Loser</th>
-            </tr>
-          </thead>
-          <tbody>
-            {matchRows}
-          </tbody>
-        </table>
+        <ul>
+          {matchRows}
+        </ul>
       </div>
     )
   }
