@@ -15,13 +15,14 @@ var MatchNew = React.createClass({
     return (
       <div className="ld-match-new ld-panel">
         <div className="ld-panel-title">Add Match</div>
-        <label>Winner</label>
+
         <select ref="winner">
+          <option value="">Select Winner</option>
           {options}
         </select>
 
-        <label>Loser</label>
         <select ref="loser">
+          <option value="">Select Loser</option>
           {options}
         </select>
 
@@ -38,6 +39,10 @@ var MatchNew = React.createClass({
       winner: this.refs.winner.getDOMNode().value,
       loser: this.refs.loser.getDOMNode().value
     };
+
+    if (ids.winner === "" || ids.loser === "" ) {
+      return MessageActions.create("You must select a winner and a loser.");
+    }
 
     if (ids.winner === ids.loser) {
       return MessageActions.create("Match cannot be same person.");
