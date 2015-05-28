@@ -1,6 +1,5 @@
 var React = require('react');
 var AuthApi = require('../api/AuthApi');
-var UserApi = require('../api/UserApi');
 
 var Login = React.createClass({
 
@@ -32,9 +31,7 @@ var Login = React.createClass({
   login: function(e) {
     var router = this.context.router;
 
-    AuthApi.login(function(err, authData) {
-      UserApi.create(authData);
-
+    AuthApi.login(function() {
       var nextPath = router.getCurrentQuery().nextPath;
       if (nextPath) {
         router.transitionTo(nextPath);
