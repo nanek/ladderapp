@@ -40,6 +40,21 @@ var ServerActions = {
     });
   },
 
+  receiveGroupCreateError: function(error) {
+    AppDispatcher.dispatch({
+      actionType: 'GROUP_CREATE_FAILED',
+      error: error
+    });
+  },
+
+  receiveGroupCreateSuccess: function(key, value) {
+    AppDispatcher.dispatch({
+      actionType: 'GROUP_CREATED',
+      key: key,
+      value: value
+    });
+  },
+
   receiveUserCreateSuccess: function(key, value) {
     AppDispatcher.dispatch({
       actionType: 'USER_CREATED',

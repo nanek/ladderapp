@@ -9,12 +9,14 @@ var App = require('./pages/App');
 var LoginPage = require('./pages/Login');
 var MainPage = require('./pages/Main');
 var PlayerPage = require('./pages/Player');
+var GroupListPage = require('./pages/GroupList');
 
 var routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={MainPage}/>
     <Route name="login" handler={LoginPage}/>
     <Route name="player" path="player/:id" handler={PlayerPage}/>
+    <Route name="groupList" path="groups" handler={GroupListPage}/>
   </Route>
 );
 

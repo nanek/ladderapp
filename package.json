@@ -6,7 +6,7 @@
     "start": "npm run server & npm run watch",
     "watch": "watchify -o js/bundle.js -v -d js/app.js & node-sass -o css -w scss",
     "server": "http-server -p 9400 -s",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js && node-sass -o css scss"
+    "build": "browserify . -t [envify --NODE_ENV production] | node-sass -o css scss"
   },
   "author": "Kenan Shifflett",
   "license": "MIT",
