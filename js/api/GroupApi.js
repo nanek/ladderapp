@@ -1,4 +1,5 @@
-var ref = new Firebase("https://ladderapp.firebaseio.com/groups");
+var config = require('../util/config');
+var ref = new Firebase(config.firebaseRoot() + '/groups');
 var ServerActions = require('../actions/ServerActions');
 
 var create = function(attrs) {

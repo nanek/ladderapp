@@ -1,8 +1,9 @@
-var ref = new Firebase("https://ladderapp.firebaseio.com");
+var config = require('../util/config');
+var ref = new Firebase(config.firebaseRoot());
 var AuthActions = require('../actions/AuthActions');
 
 var login = function(cb) {
-  ref.authWithOAuthPopup("github", cb);
+  ref.authWithOAuthPopup('github', cb);
 };
 
 var logout = function() {

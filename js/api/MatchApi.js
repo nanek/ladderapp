@@ -1,4 +1,5 @@
-var ref = new Firebase("https://ladderapp.firebaseio.com/mtg/match");
+var config = require('../util/config');
+var ref = new Firebase(config.firebaseRoot() + '/mtg/match');
 var ServerActions = require('../actions/ServerActions');
 
 var create = function(attrs) {
@@ -9,7 +10,8 @@ var create = function(attrs) {
     winnerPoints: attrs.winnerPoints,
     loser: attrs.loser,
     loserPoints: attrs.loserPoints,
-    createdAt: Firebase.ServerValue.TIMESTAMP
+    createdAt: Firebase.ServerValue.TIMESTAMP,
+    createdByUserId: attrs.createdByUserId
   }, function(err) {
     if (err) {
       return ServerActions.receiveMatchCreateError(err);

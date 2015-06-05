@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var PlayerApi = require('../api/PlayerApi');
+var AuthApi = require('../api/AuthApi');
 
 var PlayerActions = {
 
@@ -8,6 +9,8 @@ var PlayerActions = {
       actionType: 'PLAYER_CREATE_REQUEST',
       attrs: attrs
     });
+
+    attrs.createdByUserId = AuthApi.getAuth().uid;
 
     PlayerApi.create(attrs);
   }

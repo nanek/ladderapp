@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var MatchApi = require('../api/MatchApi');
 var PlayerApi = require('../api/PlayerApi');
 var EloRating = require('../util/elo');
+var AuthApi = require('../api/AuthApi');
 
 var MatchActions = {
 
@@ -14,6 +15,8 @@ var MatchActions = {
     rating = EloRating.calculate(attrs.winner.points, attrs.loser.points);
     attrs.winnerPoints = rating[0];
     attrs.loserPoints = rating[1];
+    attrs.createdByUserId = AuthApi.getAuth().uid;
+
     MatchApi.create(attrs);
 
     PlayerApi.addWin(attrs.winner.id, rating[0]);

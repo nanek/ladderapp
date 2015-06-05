@@ -1,4 +1,5 @@
-var ref = new Firebase("https://ladderapp.firebaseio.com/users");
+var config = require('../util/config');
+var ref = new Firebase(config.firebaseRoot() + '/users');
 var ServerActions = require('../actions/ServerActions');
 
 var create = function(authData) {

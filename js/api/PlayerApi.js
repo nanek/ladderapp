@@ -1,10 +1,12 @@
-var ref = new Firebase("https://ladderapp.firebaseio.com/mtg/player");
+var config = require('../util/config');
+var ref = new Firebase(config.firebaseRoot() + '/mtg/player');
 var ServerActions = require('../actions/ServerActions');
 
 var create = function(attrs) {
   attrs.wins = 0;
   attrs.losses = 0;
   attrs.points = 2000;
+  attrs.createdAt = Firebase.ServerValue.TIMESTAMP;
 
   var item = ref.push();
   item.set(attrs, function(err) {
