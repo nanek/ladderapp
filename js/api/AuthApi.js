@@ -1,6 +1,7 @@
 var config = require('../util/config');
 var ref = new Firebase(config.firebaseRoot());
 var AuthActions = require('../actions/AuthActions');
+var MessageActions = require('../actions/MessageActions');
 
 var login = function(cb) {
   ref.authWithOAuthPopup('github', cb);
@@ -19,7 +20,8 @@ var setupOnAuthHandler = function() {
     if (authData) {
       AuthActions.receiveAuthSuccess(authData);
     } else {
-      //console.log("Client unauthenticated.")
+      AuthActions.receiveAuthUnauthenticated();
+      MessageActions.create("Please refresh and login.");
     }
   });
 }

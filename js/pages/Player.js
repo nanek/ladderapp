@@ -1,6 +1,8 @@
 var React = require('react');
 var Header = require('../components/Header');
 var PlayerDetail = require('../components/PlayerDetail');
+var MatchList = require('../components/MatchList');
+var MatchStore = require('../stores/MatchStore');
 var PlayerStore = require('../stores/PlayerStore');
 var AuthApi = require('../api/AuthApi');
 
@@ -19,7 +21,8 @@ var PlayerPage = React.createClass({
 
     return {
       auth: AuthApi.getAuth(),
-      player: PlayerStore.getById(id) || {}
+      player: PlayerStore.getById(id) || {},
+      matches: MatchStore.getByPlayerId(id)
     }
   },
 
@@ -41,6 +44,7 @@ var PlayerPage = React.createClass({
         <Header user={this.state.auth}/>
         <div className="ld-container">
           <PlayerDetail {...this.state.player}/>
+          <MatchList allMatches={this.state.matches}/>
         </div>
       </div>
     );

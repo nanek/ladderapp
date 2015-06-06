@@ -14,6 +14,10 @@ var AuthActions = {
     UserApi.create(authData);
   },
 
+  receiveAuthUnauthenticated: function() {
+    console.log("Client unauthenticated.");
+  }
+
 }
 
 module.exports = AuthActions;

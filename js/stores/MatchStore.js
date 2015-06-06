@@ -25,6 +25,14 @@ var MatchStore = assign({}, EventEmitter.prototype, {
     return _.take(matches, number);
   },
 
+  getByPlayerId: function(playerId) {
+    var matches = _.filter(_matches, function(match) {
+      return match.winner.id === playerId || match.loser.id === playerId;
+    });
+
+    return matches;
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
