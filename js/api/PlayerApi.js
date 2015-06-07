@@ -50,8 +50,14 @@ var init = function() {
   });
 }
 
+var addDeck = function(id, deck) {
+  var playerRef = ref.child(id);
+  playerRef.child('decks').push(deck);
+}
+
 module.exports = {
   create: create,
+  addDeck: addDeck,
   addWin: addWin,
   addLoss: addLoss,
   init: init

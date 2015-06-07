@@ -2,6 +2,8 @@ var React = require('react');
 var Header = require('../components/Header');
 var PlayerDetail = require('../components/PlayerDetail');
 var MatchList = require('../components/MatchList');
+var DeckNew = require('../components/DeckNew');
+var DeckList = require('../components/DeckList');
 var MatchStore = require('../stores/MatchStore');
 var PlayerStore = require('../stores/PlayerStore');
 var AuthApi = require('../api/AuthApi');
@@ -44,6 +46,8 @@ var PlayerPage = React.createClass({
         <Header user={this.state.auth}/>
         <div className="ld-container">
           <PlayerDetail {...this.state.player}/>
+          <DeckNew player={this.state.player}/>
+          <DeckList player={this.state.player}/>
           <MatchList allMatches={this.state.matches}/>
         </div>
       </div>

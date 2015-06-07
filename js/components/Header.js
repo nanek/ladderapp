@@ -9,6 +9,15 @@ var Header = React.createClass({
   },
 
   render: function() {
+    var profile = this.props.user.github;
+    var image = null;
+    var username = null;
+
+    if (profile) {
+      var image = profile.cachedUserProfile.avatar_url;
+      var username = profile.username;
+    }
+
     return (
       <div className="ld-header">
         <div className="ld-container">
@@ -16,8 +25,8 @@ var Header = React.createClass({
             <Link to="/">Ladder</Link>
           </div>
           <div className="ld-header-right">
-            <img width="30" height="30" src={this.props.user.github.cachedUserProfile.avatar_url} />
-            <div className="ld-header-name">{this.props.user.github.username}</div>
+            <img width="30" height="30" src={image} />
+            <div className="ld-header-name">{username}</div>
             <a href="#" onClick={this.logout}>Logout</a>
           </div>
         </div>

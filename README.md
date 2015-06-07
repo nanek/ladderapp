@@ -18,5 +18,3 @@
 ## Links
 
    https://ladderapp.firebaseapp.com
-
-   https://ladderapp.firebaseapp.com/dev.html

@@ -13,6 +13,10 @@ var PlayerActions = {
     attrs.createdByUserId = AuthApi.getAuth().uid;
 
     PlayerApi.create(attrs);
+  },
+
+  addDeck: function(id, deck) {
+    PlayerApi.addDeck(id, deck);
   }
 
 };
