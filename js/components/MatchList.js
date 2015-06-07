@@ -1,7 +1,10 @@
 var React = require('react');
 var moment = require('moment');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var MatchListRow = React.createClass({
+  mixins: [PureRenderMixin],
+
   render: function() {
     var match = this.props.match;
     return (
@@ -14,14 +17,15 @@ var MatchListRow = React.createClass({
 });
 
 var MatchList = React.createClass({
+  mixins: [PureRenderMixin],
 
   render: function() {
     var matches = this.props.allMatches;
     var matchRows = [];
 
-    for (var key in matches) {
-      matchRows.push(<MatchListRow key={key} match={matches[key]} />);
-    }
+    matches.forEach(function(match){
+      matchRows.push(<MatchListRow key={match.hashCode()} match={match} />);
+    });
 
     return (
       <div className="ld-match-list ld-panel">
