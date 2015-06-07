@@ -50,14 +50,20 @@ var init = function() {
   });
 }
 
-var addDeck = function(id, deck) {
-  var playerRef = ref.child(id);
+var addDeck = function(playerId, deck) {
+  var playerRef = ref.child(playerId);
   playerRef.child('decks').push(deck);
+}
+
+var removeDeck = function(playerId, deckId) {
+  var deckRef = ref.child(playerId).child('decks').child(deckId);
+  deckRef.remove();
 }
 
 module.exports = {
   create: create,
   addDeck: addDeck,
+  removeDeck: removeDeck,
   addWin: addWin,
   addLoss: addLoss,
   init: init

@@ -4,6 +4,7 @@ var GroupNew = require('../components/GroupNew');
 var GroupList = require('../components/GroupList');
 var GroupStore = require('../stores/GroupStore');
 var AuthApi = require('../api/AuthApi');
+var MessageList = require('../components/MessageList');
 
 var GroupListPage = React.createClass({
 
@@ -39,6 +40,7 @@ var GroupListPage = React.createClass({
       <div>
         <Header user={this.state.auth}/>
         <div className="ld-container">
+          <MessageList/>
           <GroupList groups={this.state.groups}/>
           <GroupNew/>
         </div>

@@ -15,8 +15,12 @@ var PlayerActions = {
     PlayerApi.create(attrs);
   },
 
-  addDeck: function(id, deck) {
-    PlayerApi.addDeck(id, deck);
+  addDeck: function(playerId, deck) {
+    PlayerApi.addDeck(playerId, deck);
+  },
+
+  removeDeck: function(playerId, deckId) {
+    PlayerApi.removeDeck(playerId, deckId);
   }
 
 };

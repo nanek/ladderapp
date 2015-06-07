@@ -1,0 +1,29 @@
+.ld-deck-list-item {
+  position: relative;
+}
+
+.ld-deck-list-item-destroy {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 160px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	transition: color 0.2s ease-out;
+}
+
+.ld-deck-list-item-destroy:hover {
+	color: #af5b5e;
+}
+
+.ld-deck-list-item-destroy:after {
+	content: '×';
+}
+
+li:hover .ld-deck-list-item-destroy {
+	display: block;
+}

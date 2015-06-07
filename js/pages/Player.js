@@ -7,6 +7,7 @@ var DeckList = require('../components/DeckList');
 var MatchStore = require('../stores/MatchStore');
 var PlayerStore = require('../stores/PlayerStore');
 var AuthApi = require('../api/AuthApi');
+var MessageList = require('../components/MessageList');
 
 var PlayerPage = React.createClass({
 
@@ -45,6 +46,7 @@ var PlayerPage = React.createClass({
       <div>
         <Header user={this.state.auth}/>
         <div className="ld-container">
+          <MessageList/>
           <PlayerDetail {...this.state.player}/>
           <DeckNew player={this.state.player}/>
           <DeckList player={this.state.player}/>

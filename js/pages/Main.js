@@ -3,10 +3,10 @@ var Header = require('../components/Header');
 var LeaderBoard = require('../components/LeaderBoard');
 var MatchNew = require('../components/MatchNew');
 var MatchList = require('../components/MatchList');
+var MessageList = require('../components/MessageList');
 var PlayerNew = require('../components/PlayerNew');
 var PlayerStore = require('../stores/PlayerStore');
 var MatchStore = require('../stores/MatchStore');
-var MessageStore = require('../stores/MessageStore');
 var AuthApi = require('../api/AuthApi');
 
 function getAppState() {
@@ -14,8 +14,7 @@ function getAppState() {
     allPlayers: PlayerStore.getAllSortedByPoints(),
     allPlayersByName: PlayerStore.getAllSortedByName(),
     allMatches: MatchStore.getLast(5),
-    auth: AuthApi.getAuth(),
-    messages: MessageStore.getMessages()
+    auth: AuthApi.getAuth()
   };
 }
 
@@ -36,28 +35,19 @@ var LadderApp = React.createClass({
   componentDidMount: function() {
     PlayerStore.addChangeListener(this._onChange);
     MatchStore.addChangeListener(this._onChange);
-    MessageStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
     PlayerStore.removeChangeListener(this._onChange);
     MatchStore.removeChangeListener(this._onChange);
-    MessageStore.removeChangeListener(this._onChange);
   },
 
   render: function() {
-    var messages = this.state.messages;
-    var messageRows = [];
-
-    for (var key in messages) {
-      messageRows.push(<div key={key} className="ld-alert">{messages[key]}</div>);
-    }
-
     return (
       <div>
         <Header user={this.state.auth}/>
         <div className="ld-container">
-          {messageRows}
+          <MessageList/>
           <LeaderBoard allPlayers={this.state.allPlayers}/>
           <MatchNew allPlayers={this.state.allPlayersByName}/>
           <PlayerNew/>

@@ -1,6 +1,7 @@
 var React = require('react');
 var moment = require('moment');
 var mtg = require('../util/mtg');
+var PlayerActions = require('../actions/PlayerActions');
 
 var DeckListRow = React.createClass({
   render: function() {
@@ -15,8 +16,9 @@ var DeckListRow = React.createClass({
     });
 
     return (
-      <li>
+      <li className="ld-deck-list-item">
         {deck.name} {colors}
+        <div className="ld-deck-list-item-destroy" onClick={this.props.onDestroy} />
       </li>
     )
   }
@@ -29,7 +31,7 @@ var DeckList = React.createClass({
     var deckRows = [];
 
     for (var key in decks) {
-      deckRows.push(<DeckListRow key={key} deck={decks[key]} />);
+      deckRows.push(<DeckListRow key={key} deck={decks[key]} onDestroy={this.destroy.bind(this, key)}/>);
     }
 
     return (
@@ -40,6 +42,10 @@ var DeckList = React.createClass({
         </ul>
       </div>
     )
+  },
+
+  destroy: function(deckId) {
+    PlayerActions.removeDeck(this.props.player.id, deckId);
   }
 
 });
