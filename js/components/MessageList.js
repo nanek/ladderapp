@@ -1,7 +1,9 @@
 var React = require('react');
 var MessageStore = require('../stores/MessageStore');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var MessageList = React.createClass({
+  mixins: [PureRenderMixin],
 
   getInitialState: function() {
     return this.getState();
@@ -25,12 +27,15 @@ var MessageList = React.createClass({
     var messages = this.state.messages;
     var messageRows = [];
 
-    for (var key in messages) {
-      messageRows.push(<div key={key} className="ld-alert">{messages[key]}</div>);
-    }
-    return (<div>
-      {messageRows}
-      </div>);
+    messages.forEach(function(message) {
+      messageRows.push(<div key={message.hashCode()} className="ld-alert">{message.text}</div>);
+    });
+
+    return (
+      <div>
+        {messageRows}
+      </div>
+    );
   },
 
   _onChange: function() {

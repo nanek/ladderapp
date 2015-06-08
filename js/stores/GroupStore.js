@@ -1,14 +1,25 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
-var _ = require('lodash');
+var Immutable = require('immutable');
 
 var CHANGE_EVENT = 'change';
 
-var _groups = {};
+var _groups = Immutable.Map();
+
+var Group = Immutable.Record({
+  id: undefined,
+  name: undefined,
+  type: undefined,
+  createdByUserId: undefined,
+  createdAt: undefined,
+  authorizedUsers: undefined
+});
 
 function create(id, attrs) {
-  _groups[id] = assign({}, attrs, {id:id});
+  attrs = assign({}, attrs, {id:id});
+  var newGroup = new Group(attrs);
+  _groups = _groups.set(id, newGroup);
 }
 
 var GroupStore = assign({}, EventEmitter.prototype, {

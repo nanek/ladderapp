@@ -1,6 +1,9 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var GroupListRow = React.createClass({
+  mixins: [PureRenderMixin],
+
   render: function() {
     var group = this.props.group;
     return (
@@ -12,14 +15,15 @@ var GroupListRow = React.createClass({
 });
 
 var GroupList = React.createClass({
+  mixins: [PureRenderMixin],
 
   render: function() {
     var groups = this.props.groups;
     var groupRows = [];
 
-    for (var key in groups) {
-      groupRows.push(<GroupListRow key={key} group={groups[key]} />);
-    }
+    groups.forEach(function(group){
+      groupRows.push(<GroupListRow key={group.id} group={group} />);
+    });
 
     return (
       <div className="ld-group-list ld-panel">

@@ -1,19 +1,23 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
-var _ = require('lodash');
+var Immutable = require('immutable');
 
 var CHANGE_EVENT = 'change';
 
-var _messages = [];
+var _messages = Immutable.List();
+
+var Message = Immutable.Record({
+  text: undefined
+});
 
 function create(message) {
-  _messages.push(message);
+  _messages = _messages.push(new Message({text: message}));
   setTimeout(remove, 3000);
 }
 
 function remove() {
-  _messages.pop()
+  _messages = _messages.pop();
   MessageStore.emitChange();
 }
 
