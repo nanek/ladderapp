@@ -47,12 +47,7 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
   },
 
   getById: function(id) {
-    var player = _players.get(id);
-    if (player) {
-      return player.toObject();
-    } else {
-      return null;
-    }
+    return _players.get(id);
   },
 
   emitChange: function() {

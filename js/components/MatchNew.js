@@ -51,8 +51,8 @@ var MatchNew = React.createClass({
     }
 
     var attrs = {
-      winner: PlayerStore.getById(ids.winner),
-      loser: PlayerStore.getById(ids.loser)
+      winner: PlayerStore.getById(ids.winner).toObject(),
+      loser: PlayerStore.getById(ids.loser).toObject()
     }
 
     MatchActions.create(attrs);

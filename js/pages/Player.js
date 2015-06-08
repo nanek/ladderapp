@@ -22,9 +22,14 @@ var PlayerPage = React.createClass({
   getState: function() {
     var id = this.props.params.id;
 
+    var player = PlayerStore.getById(id);
+    if (player) {
+      player = player.toObject();
+    }
+
     return {
       auth: AuthApi.getAuth(),
-      player: PlayerStore.getById(id) || {},
+      player: player || {},
       matches: MatchStore.getByPlayerId(id)
     }
   },
