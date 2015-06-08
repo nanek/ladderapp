@@ -1,18 +1,31 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
-var _ = require('lodash');
+var Immutable = require('immutable');
 
 var CHANGE_EVENT = 'change';
 
-var _players = {};
+var _players = Immutable.Map();
+
+var Player = Immutable.Record({
+  id: undefined,
+  name: undefined,
+  wins: undefined,
+  losses: undefined,
+  points: undefined,
+  createdAt: undefined
+});
 
 function create(id, attrs) {
-  _players[id] = assign({}, attrs, {id:id});
+  attrs = assign({}, attrs, {id:id});
+  var player = new Player(attrs);
+  _players = _players.set(id, player);
 }
 
 function update(id, attrs) {
-  assign(_players[id], attrs, {id:id});
+  attrs = assign({}, attrs, {id:id});
+  var player = new Player(attrs);
+  _players = _players.set(id, player);
 }
 
 var PlayerStore = assign({}, EventEmitter.prototype, {
@@ -22,19 +35,24 @@ var PlayerStore = assign({}, EventEmitter.prototype, {
   },
 
   getAllSortedByPoints: function() {
-    return _.sortBy(_players, function(p) {
+    return _players.sortBy(function(p) {
       return -p.points;
     });
   },
 
   getAllSortedByName: function() {
-    return _.sortBy(_players, function(p) {
+    return _players.sortBy(function(p) {
       return p.name;
     });
   },
 
   getById: function(id) {
-    return _players[id];
+    var player = _players.get(id);
+    if (player) {
+      return player.toObject();
+    } else {
+      return null;
+    }
   },
 
   emitChange: function() {

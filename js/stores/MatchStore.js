@@ -41,6 +41,10 @@ var MatchStore = assign({}, EventEmitter.prototype, {
       return match.winner.id === playerId || match.loser.id === playerId;
     });
 
+    matches = matches.sortBy(function(match) {
+      return -match.createdAt;
+    });
+
     return matches;
   },
 

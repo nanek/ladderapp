@@ -2,15 +2,18 @@ var React = require('react');
 var MatchActions = require('../actions/MatchActions');
 var MessageActions = require('../actions/MessageActions');
 var PlayerStore = require('../stores/PlayerStore');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var MatchNew = React.createClass({
+  mixins: [PureRenderMixin],
+
   render: function() {
     var players = this.props.allPlayers;
     var options = [];
 
-    for (var key in players) {
-      options.push(<option key={players[key].id} value={players[key].id}>{players[key].name}</option>);
-    }
+    players.forEach(function(player) {
+      options.push(<option key={player.id} value={player.id}>{player.name}</option>);
+    });
 
     return (
       <div className="ld-match-new ld-panel">
@@ -33,7 +36,6 @@ var MatchNew = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault()
-    var players = this.props.allPlayers;
 
     var ids = {
       winner: this.refs.winner.getDOMNode().value,

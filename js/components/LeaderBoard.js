@@ -1,7 +1,10 @@
 var React = require('react');
 var Link = require('react-router').Link;
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var LeaderBoardRow = React.createClass({
+  mixins: [PureRenderMixin],
+
   render: function() {
     var player = this.props.player;
 
@@ -25,15 +28,16 @@ var LeaderBoardRow = React.createClass({
 });
 
 var LeaderBoard = React.createClass({
+  mixins: [PureRenderMixin],
 
   render: function() {
     var players = [];
     var rank = 1;
 
-    for (var key in this.props.allPlayers) {
-      players.push(<LeaderBoardRow key={key} rank={rank} player={this.props.allPlayers[key]} />);
+    this.props.allPlayers.forEach(function(player) {
+      players.push(<LeaderBoardRow key={player.id} rank={rank} player={player} />);
       rank++;
-    }
+    });
 
     return (
       <div className="ld-leaderboard ld-panel">
